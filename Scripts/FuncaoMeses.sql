@@ -29,3 +29,14 @@ BEGIN
     set @variavel = 'Dez'
  return @variavel
 END
+
+
+/*Outra opcao*/
+
+CREATE FUNCTION f_MesExtenso ( @mes int )
+RETURNS varchar(20)  
+AS 
+BEGIN 
+ declare @meses varchar(50) = 'JANFEVMARABRMAIJUNJULAGOSETOUTNOVDEZ'
+ return (@mes-1)*3+1
+END
