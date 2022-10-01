@@ -35,6 +35,22 @@ select  dbo.f_MesExtenso(1)
 
 /*****************************************************/
 
+CREATE or alter FUNCTION f_MesExtenso ( @mes int )
+RETURNS varchar(20)  
+AS 
+BEGIN 
+ declare @meses varchar(50) = 'JANFEVMARABRMAIJUNJULAGOSETOUTNOVDEZ'
+ declare @index int = (@mes-1)*3+1
+ declare @resultado varchar (20) = SUBSTRING(@meses, @index,3)
+ if (@mes < 1 or @mes > 12)
+ 	set @resultado = 'Mês Inválido!'
+ return @resultado
+END
+
+select  dbo.f_MesExtenso(11)
+
+/******************************************************/
+
 CREATE or ALTER FUNCTION dbo.f_DiaSemanaExtenso (@dia int)
 RETURNS varchar(20)
 AS
